@@ -1,0 +1,35 @@
+{
+    "name": "genericmilk/telephone",
+    "description": "Make simple API calls from Laravel!",
+    "keywords": ["laravel", "api", "curl", "get", "post"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Day",
+            "email": "peterday.main@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Genericmilk\\Telephone\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.2-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Genericmilk\\Telephone\\ServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "laravel/framework": "5.5.x"
+    }
+}
