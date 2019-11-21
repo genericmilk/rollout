@@ -1,5 +1,5 @@
 {
-    "name": "genericmilk/telephone",
+    "name": "genericmilk/rollout",
     "description": "Make simple API calls from Laravel!",
     "keywords": ["laravel", "api", "curl", "get", "post"],
     "license": "MIT",
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Genericmilk\\Telephone\\": "src/"
+            "Genericmilk\\Rollout\\": "src/"
         }
     },
     "minimum-stability": "dev",
@@ -25,7 +25,7 @@
         },
         "laravel": {
             "providers": [
-                "Genericmilk\\Telephone\\ServiceProvider"
+                "Genericmilk\\Rollout\\ServiceProvider"
             ]
         }
     },

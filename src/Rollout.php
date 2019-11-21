@@ -1,13 +1,13 @@
 <?php
 
-namespace Genericmilk\Telephone;
+namespace Genericmilk\Rollout;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 
-class Telephone extends Controller
+class Rollout extends Controller
 {
 
     protected static $url = null;
@@ -16,30 +16,30 @@ class Telephone extends Controller
     
 
     public static function call($url){
-        Telephone::$url = $url; // Add url to top
+        Rollout::$url = $url; // Add url to top
         $o = new self;
         return $o;
     }
 
     public static function headers($header){
-        Telephone::$headers = $header; // Add headers to top
+        Rollout::$headers = $header; // Add headers to top
         $o = new self;
         return $o;
 
     }    
     public static function body($body){
-        Telephone::$body = $body; // Add body to top
+        Rollout::$body = $body; // Add body to top
         $o = new self;
         return $o;
     }
     public static function bearer($bearer){
-        Telephone::$headers[] = 'Authorization: Bearer '.$bearer;
+        Rollout::$headers[] = 'Authorization: Bearer '.$bearer;
         $o = new self;
         return $o;
     }
     public static function auth($user,$pass){
         $combined = base64_encode($user.':'.$pass);
-        Telephone::$headers[] = 'Authorization: Basic '.$combined;
+        Rollout::$headers[] = 'Authorization: Basic '.$combined;
         $o = new self;
         return $o;
     }
@@ -50,14 +50,14 @@ class Telephone extends Controller
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
-        CURLOPT_URL => Telephone::$url,
+        CURLOPT_URL => Rollout::$url,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER => Telephone::$headers
+        CURLOPT_HTTPHEADER => Rollout::$headers
         ));
 
         $response = curl_exec($curl);
@@ -70,7 +70,7 @@ class Telephone extends Controller
             $response = json_decode(json_encode($response)); // force convert to php object
             return $response;
         } else {
-            throw new \Exception('Telephone dropped call; '.$err);
+            throw new \Exception('Rollout dropped call; '.$err);
         }
     }
 
@@ -91,15 +91,15 @@ class Telephone extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => Telephone::$url,
+          CURLOPT_URL => Rollout::$url,
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
           CURLOPT_TIMEOUT => 30,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_POSTFIELDS => $this->build_post_fields(Telephone::$body),
-          CURLOPT_HTTPHEADER => Telephone::$headers,
+          CURLOPT_POSTFIELDS => $this->build_post_fields(Rollout::$body),
+          CURLOPT_HTTPHEADER => Rollout::$headers,
         ));
         
         $response = curl_exec($curl);
@@ -112,7 +112,7 @@ class Telephone extends Controller
             $response = json_decode(json_encode($response)); // force convert to php object
             return $response;
         } else {
-            throw new \Exception('Telephone dropped call; '.$err);
+            throw new \Exception('Rollout dropped call; '.$err);
         }
     }
 }

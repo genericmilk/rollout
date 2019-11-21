@@ -1,5 +1,5 @@
 <?php
-    namespace Genericmilk\Telephone;
+    namespace Genericmilk\Rollout;
 
     class ServiceProvider extends \Illuminate\Support\ServiceProvider{
 
@@ -11,25 +11,25 @@
         public function register()
         {
             // Import controllers
-            $this->app->make('Genericmilk\Telephone\Telephone');
+            $this->app->make('Genericmilk\Rollout\Rollout');
             
         }
 
         protected function setupConfig(){
 
-            $configPath = __DIR__ . '/../config/telephone.php';
+            $configPath = __DIR__ . '/../config/Rollout.php';
             $this->publishes([$configPath => $this->getConfigPath()], 'config');
     
         }
 
         protected function getConfigPath()
         {
-            return config_path('telephone.php');
+            return config_path('Rollout.php');
         }
 
         protected function publishConfig($configPath)
         {
-            $this->publishes([$configPath => config_path('telephone.php')], 'config');
+            $this->publishes([$configPath => config_path('Rollout.php')], 'config');
         }
 
 
