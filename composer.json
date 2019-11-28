@@ -1,6 +1,6 @@
 {
     "name": "genericmilk/rollout",
-    "description": "Make simple API calls from Laravel!",
+    "description": "Time delay your laravel controller and blade code into a simple if branch!",
     "keywords": ["laravel", "api", "curl", "get", "post"],
     "license": "MIT",
     "authors": [
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.2"
     },
     "autoload": {
         "psr-4": {
