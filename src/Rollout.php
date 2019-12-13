@@ -54,9 +54,7 @@ class Rollout extends Controller
 
         $ip = str_replace('.','',$_SERVER['REMOTE_ADDR']);
 
-        $rolled_out = $ip <= $rolloutip ? true : false;
-
-        return $rolled_out;
+        return $ip <= $rolloutip;
         
     }
 
